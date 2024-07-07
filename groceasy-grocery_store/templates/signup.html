@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} Register - GROCEASY {% endblock %} 
+
+{% block content %} 
+
+
+<section class="position-relative py-4 py-xl-5 custom-section">
+    <div class="container custom-container">
+        
+
+<form action="#" method="post">
+    <h1 class="h3 mb-3 fw-normal"> Register </h1>
+
+    <div class="form-floating">
+      <input name="username" type="text" class="form-control" id="floatingInput" placeholder="username">
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating">
+      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <br>
+    <h4 style="font-family: zillaslab,palatino,Palatino Linotype,serif;color:red">{{error}}</h4>
+    <br>
+
+    <button class="btn btn-primary w-100 py-2" type="submit" formaction="/signup" value="Sign Up">Sign in</button>
+  </form>
+<br>
+  <div style="width:300px; margin:0 auto;">
+    Already have an account? <a href="/login"> <button type="button" class="btn btn-secondary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Enter</button> </a>
+  </div>
+
+
+</div>
+</section>
+
+
+{% endblock %} 

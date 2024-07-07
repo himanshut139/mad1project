@@ -1,0 +1,62 @@
+<!-- THIS PAGE WILL BE AVAILABLE TO THE ADMIN  -->
+{% extends 'base.html' %}
+{% block title %} Admin-Products {% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Products - Admin's Portal</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/dashboard">Home</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/categories">Categories</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/add/product">Add Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <br>
+  <h4 style="font-family: zillaslab,palatino,Palatino Linotype,serif; text-align: center; color:red">{{error}}</h4>
+  <br>
+
+
+<div style="text-align: center;">
+<table class="table">
+    <thead class="table-dark">
+        <th> S.No. </th>
+        <th> Name </th>
+        <th> Expiry date </th>
+        <th> Price per unit (in Rs) </th>
+        <th> Available quantity </th>
+        <th> Update </th>
+        <th> Delete </th>
+    </thead>
+    {% for one in all %}
+    <tbody>
+        <td> {{loop.index}} </td>
+        <td> {{one['name']}} </td>
+        <td> {{one['exp_date']}} </td>
+        <td> {{one['rate_per_unit']}} </td>
+        <td> {{one['qnt_avl']}} </td>
+        
+        <td><a href="/p_id={{ one['id'] }}/update/product"><button type="button" class="btn btn-secondary btn-sm">Update</button></a></a></td>
+        <td><a href="/p_id={{ one['id'] }}/delete/product"><button type="button" class="btn btn-secondary btn-sm">Delete</button></a></a></td>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

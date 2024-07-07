@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %} Admin-Categories {% endblock %}
+
+
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Categories - Admin's Portal</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/dashboard">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/create/category">Add Category</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/view/products">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <br>
+  <h4 style="font-family: zillaslab,palatino,Palatino Linotype,serif; text-align: center; color:red">{{error}}</h4>
+  <br>
+
+<div style="text-align: center;">
+<table class="table">
+    <thead class="table-dark">
+        <th> S.No. </th>
+        <th> Name </th>
+        <th> Update </th>
+        <th> Delete </th>
+        <th> Add Product in the Category </th>
+    </thead>
+    {% for one in all %}
+    <tbody>
+        <td> {{loop.index}} </td>
+        <td> {{one['name']}} </td>
+        
+        <td><a href="/c_id={{ one['id'] }}/update/category"><button type="button" class="btn btn-secondary btn-sm">Update</button></a></td>
+        <td><a href="/c_id={{ one['id'] }}/delete/category"><button type="button" class="btn btn-secondary btn-sm">Delete</button></a></td>
+        <td><a href="/c_id={{ one['id'] }}/add/product"><button type="button" class="btn btn-secondary btn-sm">Add Product</button></a></td>
+      </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

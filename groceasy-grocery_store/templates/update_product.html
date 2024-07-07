@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %} Update Product {% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Products - Admin's Portal</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/dashboard">Home</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/categories">Categories</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/view/products">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="position-relative py-4 py-xl-5 custom-section">
+    <div class="container custom-container">
+
+  <form method="post" action="/p_id={{ id }}/update/product" enctype="multipart/form-data">
+    <h1 class="h3 mb-3 fw-normal">Update Product</h1>
+
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label"> Enter the new name: </label>
+    <input type="text" name="newname" class="form-control" id="formGroupExampleInput" placeholder="Product Name" >
+  </div>
+  <div >
+    <label for="formGroupExampleInput2" class="form-label"> Enter the new expiry date: </label>
+    <input type="date" name="newexp" class="form-control" id="formGroupExampleInput2" >
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label"> Enter the new price (per unit): </label>
+    <input type="number" name="newrpu" class="form-control" id="formGroupExampleInput2" placeholder="Price" >
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label"> Enter the new available quatity:  </label>
+    <input type="number" name="newqntavl" class="form-control" id="formGroupExampleInput2" placeholder="Available quantity" >
+  </div>
+    
+  <input type="submit" value="Submit" />
+
+</form>
+
+    </div>
+  </section>
+
+{% endblock %}

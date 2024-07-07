@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %} User Login {% endblock %}
+
+{% block content %}
+
+<section class="position-relative py-4 py-xl-5 custom-section">
+  <div class="container custom-container">
+
+<form action="#" method="POST">
+    <h1 class="h3 mb-3 fw-normal">User Login</h1>
+
+    <div class="form-floating">
+      <input name="username" type="text" class="form-control" id="floatingInput" placeholder="username">
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating">
+      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <br>
+    <h4 style="font-family: zillaslab,palatino,Palatino Linotype,serif; text-align: center; color:red">{{error}}</h4>
+    <br>
+
+    <button class="btn btn-primary w-100 py-2" type="submit" formaction="/login" value="Login">Login</button>
+  </form>
+  <br><br>
+  <div style="width:260px; margin:0 auto;">
+    Don't have an account? <a href="/signup"> <button type="button" class="btn btn-secondary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Sign Up</button> </a>
+  </div>
+
+  <div style="width:200px; margin:0 auto;">
+    Login as admin? <a href="/admin/login"> <button type="button" class="btn btn-secondary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Enter</button> </a>
+  </div>
+  <ul class="nav justify-content-center ">
+    <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
+  </ul>
+</section>
+
+{% endblock %}

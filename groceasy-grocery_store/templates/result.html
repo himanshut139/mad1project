@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %} User Dashboard - GROCEASY {% endblock %} 
+
+{% block content %} 
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"> {{ user }}'s Dashboard </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/cart">Cart</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+      </div>
+    </div>
+  </nav>
+
+  <br><br>
+  <h4 style="font-family: zillaslab,palatino,Palatino Linotype,serif; text-align: center; color:rgb(234, 88, 88)">{{error}}</h4>
+
+  <div class="container py-4 py-xl-5 mx-auto col-xl-9">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for product in products %}
+      <div class="col">
+        <div class="card">
+          <img src="../../static/img/{{product.id}}.jpg" class="card-img-top img-thumbnail" alt="...">
+          <div class="card-body">
+            <h3 class="card-title">{{product.name}}</h3>
+            {% if product.qnt_avl != 0 %}
+            <h6 class="card-title"> Available Quantity: {{product.qnt_avl}}</h6>
+            {% elif product.qnt_avl == 0 %}
+            <h6 class="card-title"> Available Quantity: Out of stock</h6>
+            {% endif %}
+            <h6 class="card-text">Best before: {{product.exp_date}}</h6>
+            <form method="POST">
+              <div class="input-group mb-3">
+                <span class="input-group-text">₹</span>
+                <span class="input-group-text">{{product.rate_per_unit}}</span>
+                <input type="number" type="text" class="form-control" placeholder="Number of Items" name="count" required>
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2" name="product_id" value="{{product.id}}">Add to Cart</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %} Manager's Dashboard-Groceasy {% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"> Admin's Dashboard </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/view/products">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+    </form>
+      </div>
+    </div>
+  </nav>
+
+  <br>
+  <h4 style="font-family: zillaslab,palatino,Palatino Linotype,serif; text-align: center; color:red">{{error}}</h4>
+  <br>
+
+  <img src="../../static/img/bg.jpg" alt="admin.png" width="100%">
+
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %} Cart {% endblock %}
+
+{% block content %}
+
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"> {{ user }}'s Dashboard </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href={{link}}>Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <br><br>
+      <h4 style="font-family: zillaslab,palatino,Palatino Linotype,serif; text-align: center; color:rgb(234, 88, 88)">{{error}}</h4>
+      
+    <div>
+    <div class="container py-4 py-xl-5 mx-auto col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="container mt-4">
+                    <div class="row">
+                      <div class="col">
+                        <h3>Shopping Cart</h3>
+                        <ul class="list-group">
+                            {% for product, count in products %}
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                  <div class="d-flex align-items-center">
+                                    <img src="../../static/img/{{product.id}}.jpg" alt="Item 3" width="50" height="50" class="mr-3">
+                                    <span>{{product.name}}</span>
+                                  </div>
+                                  <span>Purchased: {{count}}</span>
+                                  <span>₹{{product.rate_per_unit}}</span>
+                                  <form method="POST">
+                                    <button type="submit" class="btn btn-danger btn-sm" name="remove" value="{{product.id}}">Remove</button>
+                                  </form>
+                                </div>
+                              </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="mt-3 d-flex justify-content-between align-items-center">
+                          <strong>Total: ₹{{ total }}</strong>
+                          <form method="POST">
+                            <button type="submit" class="btn btn-primary btn-sm" name="checkout" value="true">Checkout</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
